@@ -37,5 +37,7 @@ Testing a directed graph as a separate package.
 using string split regex, ternary operator for a version number comparison. different cases to be handled for unequal strings of version numbers.
 handled cases "12.21.0001"; //"12.21.3456"; "12.21.3456"; VS "12.21.001"; //"12.21.3457"; "12.21";
 
+**/src/RegEx/regexTest.java**
+This code block checks a pattern and splits a string around it, including the end of string in it's pattern too. Also returns count of regex / the pattern itself replaces the pattern as well
 
 
