@@ -53,6 +53,6 @@ Angle between hour and minute hand of a clock.
 My linked list implementation.
 
 **/src/Linked_List/MergePointLinkList.java**
-Approach - store address of nodes in a hashset and then compare O(m+n) space and time.
-
+Approach 1 - store address of nodes in a hashset and then compare O(m+n) space and time.
+ Approach 2 - offset from start approach.
 
