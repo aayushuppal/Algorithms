@@ -32,3 +32,10 @@ ordering and usage of animals on a farm using super constructor and instanceof.
 
 **/src/SeparatePackage**
 Testing a directed graph as a separate package.
+
+**/src/pastAmaz/versionNumCompare.java**
+using string split regex, ternary operator for a version number comparison. different cases to be handled for unequal strings of version numbers.
+handled cases "12.21.0001"; //"12.21.3456"; "12.21.3456"; VS "12.21.001"; //"12.21.3457"; "12.21";
+
+
+
