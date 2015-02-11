@@ -14,6 +14,7 @@ public class versionNumCompare {
 		String[] arr2 = y.split("\\.");
 		int out = 0;
 		int len = Math.min(arr1.length, arr2.length);
+		
 		for (int i = 0; i< len; i++){
 			int a  = Integer.parseInt(arr1[i]);
 			int b  = Integer.parseInt(arr2[i]);
