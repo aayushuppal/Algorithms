@@ -49,3 +49,10 @@ Iterative and recursive implementation of Fibonacci series.
 **/src/pastAmaz/ClockAngle.java**
 Angle between hour and minute hand of a clock.
 
+**/src/Linked_List/MyLinkedList.java**
+My linked list implementation.
+
+**/src/Linked_List/MergePointLinkList.java**
+Approach - store address of nodes in a hashset and then compare O(m+n) space and time.
+
+
