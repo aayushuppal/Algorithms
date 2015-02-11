@@ -46,3 +46,6 @@ begin index - denotes the the first index that is included, end index - the inde
 **/src/pastAmaz/Fibonacci.java**
 Iterative and recursive implementation of Fibonacci series.
 
+**/src/pastAmaz/ClockAngle.java**
+Angle between hour and minute hand of a clock.
+
