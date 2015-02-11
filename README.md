@@ -54,5 +54,6 @@ My linked list implementation.
 
 **/src/Linked_List/MergePointLinkList.java**
 Approach 1 - store address of nodes in a hashset and then compare O(m+n) space and time.
- Approach 2 - offset from start approach.
+Approach 2 - offset from start approach.
+Approach 3 - by finding head of circular linked list approach.
 

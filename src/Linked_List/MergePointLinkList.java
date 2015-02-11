@@ -1,6 +1,7 @@
 package Linked_List;
 // Approach 1 - store address of nodes in a hashset and then compare O(m+n) space and time.
 // Approach 2 - offset from start approach.
+// Approach 3 - by finding head of circular linked list approach
 import Linked_List.MyLinkedList.Node; // avoid this by putting Node in a separate class 
 import java.util.HashSet;
 
@@ -19,10 +20,15 @@ public class MergePointLinkList {
 	ll2.addNode(10);
 	ll2.addNode(11);
 	ll2.addNode(12);
-	ll2.lastNode(ll2.head).next = ll1.lastNode(ll1.head);
+	ll2.addNode(13);
+	ll2.addNode(14);
+	ll2.addNode(15);
+	ll2.addNode(16);
+	//ll2.lastNode(ll2.head).next = ll1.head.next.next;
 	
 	//Node mergerNode = findMergePoint_Hashsetapproach(ll1.head,ll2.head);
-	Node mergerNode = findMergePoint_Offsetapproach(ll1.head,ll2.head);
+	//Node mergerNode = findMergePoint_Offsetapproach(ll1.head,ll2.head);
+	Node mergerNode = findMergePoint_CircularLLapproach(ll1.head,ll2.head);
 	int disp = mergerNode != null ? mergerNode.val:0; //0 denotes null node
 	System.out.println(disp);
 	}
@@ -75,6 +81,25 @@ public class MergePointLinkList {
 			curr2 = curr2.next;
 		}	
 		if (curr1 == curr2){ return curr1;}
+		return null;
+	}
+
+	public static Node findMergePoint_CircularLLapproach(Node head1, Node head2){
+		int len1 = 0;
+		Node curr1 = head1;
+		while(curr1.next != null){	len1++; curr1=curr1.next;	}len1++;
+		MyLinkedList cl1 = new MyLinkedList();
+		cl1.head = head1;
+		cl1.lastNode(cl1.head).next = cl1.head;
+		
+		Node ptr1 = head2;
+		Node ptr2 = head2;
+		for (int i=0; i<len1; i++){	ptr1 = ptr1.next;	}
+		while(ptr1 != ptr2 && ptr1.next != null){
+			ptr1 = ptr1.next;
+			ptr2 = ptr2.next;
+		} 
+		if (ptr1 == ptr2){	return ptr1;	}
 		return null;
 	}
 }
