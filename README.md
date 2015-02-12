@@ -66,6 +66,8 @@ Remove whitespaces using string builder, no regex.
 **/src/Linked_List/DoublyLinkedList.java**
 Doubly linked list implementation.
 
+**/src/Sorting/InsertionSort.java**
+Insertion sort implementation.
 
 
 
