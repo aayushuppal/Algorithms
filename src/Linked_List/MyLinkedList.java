@@ -33,4 +33,13 @@ public class MyLinkedList {
 		}
 	}
 	
+	public int getSize(){
+		Node curr = head;
+		int count = 0;
+		while(curr.next != null){
+			curr = curr.next;
+			count++;
+		}count++;
+		return count;
+	}
 }
