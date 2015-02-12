@@ -69,5 +69,8 @@ Doubly linked list implementation.
 **/src/Sorting/InsertionSort.java**
 Insertion sort implementation.
 
+**/src/Sorting/MyMergeSort.java**
+Merge sort implementation.
+
 
 
