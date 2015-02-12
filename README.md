@@ -57,3 +57,15 @@ Approach 1 - store address of nodes in a hashset and then compare O(m+n) space a
 Approach 2 - offset from start approach.
 Approach 3 - by finding head of circular linked list approach.
 
+**/src/String/MyStringBuffer.java**
+implementation of StringBuffer - append and retString methods.
+
+**/src/String/RemoveWhitespaces.java**
+Remove whitespaces using string builder, no regex.
+
+**/src/Linked_List/DoublyLinkedList.java**
+Doubly linked list implementation.
+
+
+
+
