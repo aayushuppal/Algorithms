@@ -78,4 +78,6 @@ Merge sort of Linked List implementation. Also includes function for merger of t
 **/src/Tree/NodesBetweenLimit.java**
 Nodes between a range in a binary search tree. Nodes less than a number in binary search tree.
 
+**/src/pastAmaz/SunBuilding.java**
+Find buildings on which sun is incident.
 
