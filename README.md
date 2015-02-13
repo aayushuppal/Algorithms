@@ -72,5 +72,7 @@ Insertion sort implementation.
 **/src/Sorting/MyMergeSort.java**
 Merge sort implementation.
 
+**/src/Linked_List/SortLinkedList.java**
+Merge sort of Linked List implementation. Also includes function for merger of two linked lists.
 
 
