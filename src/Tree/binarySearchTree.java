@@ -1,5 +1,7 @@
 package Tree;
 
+import Tree.binarySearchTree.Node;
+
 
 public class binarySearchTree {
 Node root;
@@ -39,6 +41,43 @@ public void addNode(int key, String name){
 	}
 
 }
+
+public void addNode(int key){
+	Node newNode = new Node(key);
+	Node focusNode;
+	
+	if (root == null){
+		root = newNode;	
+	}
+	
+	else {
+		
+		focusNode = root;
+		
+		while (true){
+			Node parentNode = focusNode;
+			
+			if (key < focusNode.key) { focusNode = focusNode.leftChild;
+				if (focusNode == null) {
+				parentNode.leftChild = newNode;
+				newNode.parentNode = parentNode;
+				newNode.pToN = 1;
+				break;
+				}
+			}
+			else { focusNode = focusNode.rightChild;
+				if (focusNode == null) {
+				parentNode.rightChild = newNode;
+				newNode.parentNode = parentNode;
+				newNode.pToN = 2;
+				break;
+				}
+			}
+		}
+	}
+
+}
+
 
 public Node findNode(int key) {
 	Node focusNode = root;
@@ -220,10 +259,24 @@ class Node {
 	this.name = name;
 	}
 	
+	Node(int key){
+		this.key = key;
+		}
+
+	Node(String name){
+		this.name = name;
+		}
+	
+	public Node() {
+		
+	}
+
 	public String toString(){
 	return name+" has the key "+key;
 	}
 }
+
+
 
 
 
