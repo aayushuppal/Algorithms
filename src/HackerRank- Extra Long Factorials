@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+	public static BigInteger ONE = new BigInteger("1"); 
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in = new Scanner(System.in);
+        System.out.println("enter: \n") ;
+        System.out.println(factorial(in.nextBigInteger())) ;
+    }
+    
+    public static BigInteger factorial (BigInteger N){
+        while (!N.equals(ONE)){
+            return N.multiply(factorial(N.subtract(ONE)));
+        }
+        return ONE;
+    }
+}
