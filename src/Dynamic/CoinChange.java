@@ -1,14 +1,19 @@
 package Dynamic;
 
+import java.util.Arrays;
+
 public class CoinChange {
 
 	public static void main(String[] args) {
-		int[] coins = {2,4,6};
-		int total = 14;
-		System.out.println(returnMinCoinsNeeded(total, coins));
+		int[] coins = {1,5,6,8};
+		Arrays.sort(coins);
+		int total = 8;
+		int[][] sumMat = returnMinCoinsNeeded(total, coins);
+		System.out.println(sumMat[coins.length-1][total]);
+		printCoins(sumMat, coins.length-1, total, coins);
 	}
 	
-	public static int returnMinCoinsNeeded(int total, int[] coins) {
+	public static int[][] returnMinCoinsNeeded(int total, int[] coins) {
 		int Mat[][] = new int[coins.length][total+1];
 		for (int r=0; r<coins.length; r++) {
 			for (int c=0; c<total+1; c++) {
@@ -24,7 +29,23 @@ public class CoinChange {
 				
 			}
 		}
-		return Mat[coins.length-1][total];
+		return Mat;
+	}
+	
+	public static void printCoins(int[][] Mat, int r,int c, int[] coins) {
+		int temp = Mat[r][c];
+		
+		while (temp !=0) {
+			if (c < coins[r]) {
+				r--;
+			} else if (temp == 1+Mat[r][c- coins[r]]) {
+				temp = Mat[r][c- coins[r]];
+				c = c- coins[r];
+				System.out.println(coins[r]);
+			} else {
+				r--;
+			}
+		}
 	}
 	
 }
