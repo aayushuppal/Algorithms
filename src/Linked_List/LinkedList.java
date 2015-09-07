@@ -38,6 +38,20 @@ public class LinkedList {
 		
 	}
 	
+	public int length() {
+		if (head == null)  {
+			return 0;
+		} else {
+			int count = 0;
+			Node temp = head;
+			do {
+				count++;
+				temp = temp.next;
+			} while (temp != null);
+			return count;
+		}
+	}
+	
 	public static void main(String[] args) {
 		LinkedList ll = new LinkedList();
 		ll.add(10);
