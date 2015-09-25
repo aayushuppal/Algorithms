@@ -168,6 +168,20 @@ public class binarySearchTree {
 
     }
 
+    public int SumBetween(Node root, int L, int H) {
+	if (root == null) {
+	    return 0;
+	}
+	if (root.key < L) {
+	    return SumBetween(root.rightChild, L, H);
+	}
+	if (root.key > H) {
+	    return SumBetween(root.leftChild, L, H);
+	}
+	return root.key + SumBetween(root.leftChild, L, H)
+		+ SumBetween(root.rightChild, L, H);
+    }
+
     public boolean checkLeaf(int key) {
 	boolean boolval = false;
 	Node a = findNode(key);
@@ -197,6 +211,40 @@ public class binarySearchTree {
 
     }
 
+    public void ConvertToDLL(Node root) {
+	if (root != null) {
+
+	    ConvertToDLL(root.leftChild);
+
+	    Node L = root.leftChild;
+	    Node R = root.rightChild;
+	    Node RL = RightMost(L);
+	    Node LR = LeftMost(R);
+	    root.leftChild = RL;
+	    RL.rightChild = root;
+	    root.rightChild = LR;
+	    LR.leftChild = root;
+
+	    ConvertToDLL(root.rightChild);
+
+	}
+
+    }
+
+    public Node RightMost(Node root) {
+	while (root.rightChild != null) {
+	    root = root.rightChild;
+	}
+	return root;
+    }
+
+    public Node LeftMost(Node root) {
+	while (root.leftChild != null) {
+	    root = root.leftChild;
+	}
+	return root;
+    }
+
     public void emptyNode(int key) {
 	if (findNode(key).pToN == 1) {
 	    findNode(key).parentNode.leftChild = null;
@@ -216,6 +264,9 @@ public class binarySearchTree {
 	myTree.addNode(23, "asdsdsybsada");
 	myTree.addNode(26, "glastrfraba");
 	System.out.println("addNode done");
+
+	myTree.ConvertToDLL(myTree.root);
+	System.out.println(myTree.SumBetween(myTree.root, 10, 26));
 
 	/*
 	 * Node asd = myTree.findNode(10); Node asdg = myTree.findNode(101);

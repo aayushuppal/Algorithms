@@ -12,14 +12,17 @@ import java.util.Set;
 public class Tree_bst_distant {
 
     public static void main(String[] args) {
-	// int[] inp = { 4, 2, 2, 1, 2 };
 	int[] inp = { 9, 3, 2, 9, 2, 1, 7, 3, 7, 4 };
+
 	int root = findHead(inp);
+
 	if (root < 0) {
 	    System.out.println("incorrect input");
 	    System.exit(-1);
 	}
+
 	Node head = constructGraph(inp, root);
+
 	int[] xxc = findDistArr(head, inp.length);
 	System.out.println();
 
@@ -82,6 +85,7 @@ public class Tree_bst_distant {
 	}
 	return distArr;
     }
+
 }
 
 class Node {
