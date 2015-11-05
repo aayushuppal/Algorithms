@@ -1,0 +1,28 @@
+Processes/Tasks
+Processes are running programs, including code, data, heap, and stack. In most implementations (but not always), each process has its own virtual address space (i.e. its own logical address-to-physical memory mapping) and its own set of system resources (files, environment variable, etc.). It is fairly common to for each process to have several threads (see below). This way there is a process to maintain the address space and several threads to control the process' execution.
+
+Threads
+A thread is a control flow in an executable image. Threads can be "user level" (i.e., the process handles multiple threads within itself) or "kernel level" (i.e., the OS scheduler handles multiple threads within a single process). Two threads from the same process naturally share the same code and global data but are given different stacks so that they do not interfere with each other's local variable and may have their own call chain.
+
+
+They filled more different. . threads lives within a process ... if a process dies, all threads in that process die..thread no heap..process there. . context switch and creating a thread is less expensive .
+
+-----------IPC and Thread communication
+
+inter-processes: between processes - boardly, System 5 IPC. specifically, it would encompass pipes, semaphores, shared memory, sockets, signals. Typically, these services are provided by the OS kernel
+
+inter-thread: communication between the threads of the same process. you would use thread-synchronization primitives - which could provided by the OS, and it also be implemented in the user space thread-library.
+
+
+The simplest is shared memory. Both processes have access to some memory that can be used read or write, such that writes in one are visible in the reads of the other.
+
+The other mechanism is channels, which acts like a pipe between the two processes. In this case, one process puts some data into the pipe, and the other process pulls it out. This mechanism is destructive, once consumed, the data is lost from the pipes, so the receiving process better do something with it.
+
+Although the first case sounds simpler, in practice it is wrought with peril. If both processes try to write at the same time, who knows what will happen. To avoid that, a third type of IPC mechanism is used, locks, which are used to signal from one process to the other when it's ok to do something to the shared state.
+
+From a theoretical point of view, they are all equivalent. Most operating systems provide all of these mechanisms.
+
+But concurrent processes do not have to communicate. in the "Shared Nothing" Model, a single master task prepares a number of work tasks. The work tasks perform a calculation without additional input. when all of the workers are done, the master task can produce a result. This is attractive because IPC comes with a perfomance cost (synchronization), and shared nothing sidesteps synchronization entirely.
+
+
+

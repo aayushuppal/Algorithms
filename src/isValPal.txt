@@ -1,0 +1,18 @@
+	// check valid palindrome, recursively, remove whitespaces
+	
+	public static boolean isvalidPal(String str) {
+        str = str.trim();
+        return isPal(str,0, str.length()-1);
+    }
+
+    private static boolean isPal(String str, int s, int e) {
+        if (s >= e) {
+            return true;
+        }
+	
+	    if (str.charAt(s) != str.charAt(e)) {
+	        return false;
+	    } else {
+	        return isPal(str,++s, --e);
+	    }
+    }

@@ -1,0 +1,37 @@
+// Dijkstra
+
+public void djkstr(Node root){
+	PriorityQueue<Node> pq = new PriorityQueue<>(Comparator);
+	root.dist = 0;
+	root.prev = root;
+	
+	pq.add(root);
+	
+	while(!pq.isEmpty()){
+		
+		Node curr = pq.poll();
+		curr.visited = true;
+		
+		for (Node n : curr.neighbors){
+			if (!n.visited){
+				if (curr.dist+length(curr,n) < n.dist){
+					n.dist = curr.dist+length(curr,n);
+					n.prev = curr;
+					pq.update(n);
+				}
+			}
+		}
+	}
+	
+}
+
+
+
+Node {
+	int val;
+	List<Node> neighbors;
+	
+	int dist;
+	boolean visited;
+	Node prev;
+}

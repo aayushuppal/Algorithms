@@ -1,0 +1,39 @@
+	public static int[] addArr(int[] A, int[] B) {
+         int i = A.length-1, j =B.length-1;
+         List<Integer> aL = new ArrayList<Integer>();
+         
+         int c = 0;
+         
+         while (i >= 0 || j >= 0 || c > 0) {
+             int a = 0;
+             int b = 0;
+             
+             if (i >= 0){
+                 a = A[i];
+             }
+             
+             if (j >= 0){
+                 b = B[j];
+             }
+             
+             int x = a+b+c;
+             c = x>9 ? 1:0;
+             int p = x%10;
+             
+             aL.add(p);
+             
+             i--;
+             j--;
+         }
+         
+         int[] res = new int[aL.size()];
+         int p = res.length-1;
+         
+         for (Integer x: aL){
+             res[p] = x;
+             p--;
+         }
+         
+         return res;
+         
+    }

@@ -1,0 +1,16 @@
+find ./ -name "*.txt" -print0 | xargs -0 sed -i 's/aayush/aaditya/g'
+find ./ -name "*.txt" -print0 | xargs -0 sed -i 's/aaditya/aayush/g'
+
+find ./ -name "*.htm" -print0 | xargs -0 sed -i 's/www.w3schools.com/www.abcschools.com/g'
+
+find ./ -name "*.htm" -print0 | xargs -0 sed -i 's/href\=\"http\:\/\/www\.marketo\.com\"/href\=\"http\:\/\/lp\.marketo\.com\"/g'
+
+href=\"http:\/\/www.w3schools.com\"
+
+
+
+
+href="http://www.w3schools.com"
+
+
+href\=\"http\:\/\/www\.w3schools\.com\"

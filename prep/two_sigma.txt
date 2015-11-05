@@ -1,0 +1,31 @@
+Two sigma notes
+
+Visitor pattern		http://www.tutorialspoint.com/design_pattern/visitor_pattern.htm
+
+SOLID principles	http://zeroturnaround.com/rebellabs/object-oriented-design-principles-and-the-5-ways-of-creating-solid-applications/
+
+
+----------------
+latency is the amount of time to finish an operation throughput is the amount of work we finished in a unit time
+
+
+Definition of terms
+
+Let us attempt to define those two terms:
+
+Latency is the time required to perform some action or to produce some result. Latency is measured in units of time -- hours, minutes, seconds, nanoseconds or clock periods.
+
+Throughput is the number of such actions executed or results produced per unit of time. This is measured in units of whatever is being produced (cars, motorcycles, I/O samples, memory words, iterations) per unit of time. The term "memory bandwidth" is sometimes used to specify the throughput of memory systems.
+
+A simple example
+
+The following manufacturing example should clarify these two concepts:
+
+An assembly line is manufacturing cars. It takes eight hours to manufacture a car and that the factory produces one hundred and twenty cars per day.
+
+The latency is: 8 hours.
+
+The throughput is: 120 cars / day or 5 cars / hour.
+
+
+

@@ -1,0 +1,18 @@
+// reverse a linked list
+
+	public static ListNode revLL(ListNode head){
+        
+        if (head == null){
+            return;
+        }
+        
+        if (head.next == null ){
+            return head;
+        }
+        
+        ListNode nd = revLL(head.next);
+        head.next.next = head;
+        head.next = null;
+        
+        return nd;
+    }

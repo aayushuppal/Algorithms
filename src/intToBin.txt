@@ -1,0 +1,12 @@
+// integer to binary
+	public static String IntToBin(int a){
+        StringBuilder sbr = new StringBuilder();
+        
+        while(a>0) {
+            int x = a%2;
+            a = a/2;
+            sbr.insert(0,x);
+        }
+        
+        return sbr.toString();
+    }

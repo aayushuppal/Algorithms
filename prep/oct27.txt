@@ -1,0 +1,292 @@
+----------------------------------------------------------------
+public boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        else {
+            return isMirror(root.left,root.right);
+        }
+    }
+    
+    private boolean isMirror(TreeNode A, TreeNode B){
+        
+        if (A == null && B == null)    {
+            return true;
+        }
+        
+        if (A == null || B == null)    {
+            return false;
+        }
+        
+        if (A.val != B.val){
+            return false;
+        } else {
+            return isMirror(A.left,B.right) && isMirror(A.right,B.left);
+        }
+    }
+
+----------------------------------------------------------------
+public boolean isSame(TreeNode rootA, TreeNode rootB){
+        if(rootA == null && rootB == null){
+            return true;
+        }
+        if (rootA == null || rootB == null){
+            return false;
+        }
+        if (rootA.val != rootB.val){
+            return false;
+        } else {
+            return isSame(rootA.left, rootB.left) && isSame(rootA.right, rootB.right);
+        }
+    }
+
+----------------------------Lowest Common Ancestor of a Binary Search Tree------------------------------------
+
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (!find(root,p) || !find(root,q)){
+            return null;
+        } else {
+            return lcaUtil(root,p,q);
+        }
+    }
+    
+    private TreeNode lcaUtil(TreeNode root, TreeNode p, TreeNode q){
+        if (root == p || root == q){
+            return root;
+        }
+        
+        boolean isPLeft = find(root.left,p);
+        boolean isQLeft = find(root.left,q);
+        
+        if (isPLeft != isQLeft){
+            return root;
+        }
+        
+        
+        if (isPLeft){
+            return lcaUtil(root.left,p,q);
+        } else {
+            return lcaUtil(root.right,p,q);
+        }
+    }
+    
+    private boolean find(TreeNode root, TreeNode A){
+        if (root == null){
+            return false;
+        }
+        
+        if (root.val == A.val){
+            return true;
+        }
+        
+        if (root.val < A.val){
+            return find(root.right,A);
+        } else {
+            return find(root.left,A);       
+        }
+         
+    }
+------------------------Lowest Common Ancestor of a Binary Tree----------------------------------------
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null)
+            return null;
+        
+        if (root == p || root == q)
+            return root;
+            
+        TreeNode left = lowestCommonAncestor(root.left,p,q);
+        TreeNode right = lowestCommonAncestor(root.right,p,q);
+        
+        if (left != null && right != null)
+            return root;
+        
+        if (left == null) {
+            return right;
+        } else {
+            return left;
+        }
+    }
+-------------------------Serialize and Deserialize Binary Tree---------------------------------------
+// Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        if (root == null) {
+            return "[]";
+        }
+        String output = "[" + root.val;
+
+        ArrayList<TreeNode> children = new ArrayList<>();
+
+        children.add(root);
+
+        while (children.size() > 0) {
+            ArrayList<TreeNode> parent = children;
+            children = new ArrayList<>();
+
+            for (TreeNode p : parent) {
+
+                if (p.left == null) {
+                    output = output + "," + "#";
+                } else {
+                    output = output + "," + p.left.val;
+                    children.add(p.left);
+                }
+
+                if (p.right == null) {
+                    output = output + "," + "#";
+                } else {
+                    output = output + "," + p.right.val;
+                    children.add(p.right);
+                }
+
+            }
+
+        }
+
+        return output + "]";
+    }
+    
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        data = data.substring(1, data.length() - 1);
+        String[] sArr = data.split(",");
+
+        if (sArr[0].equals("")) {
+            return null;
+        }
+
+        int i = 0;
+        Queue<TreeNode> cQ = new LinkedList<>();
+        TreeNode root = new TreeNode(Integer.parseInt(sArr[i++]));
+        cQ.add(root);
+
+        while (!cQ.isEmpty()) {
+            TreeNode temp = cQ.poll();
+
+            String l = sArr[i++];
+            String r = sArr[i++];
+
+            if (!l.equals("#")) {
+                TreeNode left = new TreeNode(Integer.parseInt(l));
+                temp.left = left;
+                cQ.add(left);
+            }
+            if (!r.equals("#")) {
+                TreeNode right = new TreeNode(Integer.parseInt(r));
+                temp.right = right;
+                cQ.add(right);
+            }
+        }
+
+        return root;
+    }
+-------------------------Implement Trie (Prefix Tree)---------------------------------------
+class TrieNode {
+    // Initialize your data structure here.
+    char val;
+    HashMap<Character, TrieNode> adjMap;
+    String word;
+    HashSet<String> words;
+    // instead of storing words/word could keep isLeaf boolean flag
+
+    public TrieNode(char a) {
+        val = a;
+        adjMap = new HashMap<>();
+        word = null;
+        words = new HashSet<>();
+    }
+
+    public TrieNode() {
+        adjMap = new HashMap<>();
+        words = new HashSet<>();
+    }
+
+}
+
+public class Trie {
+    private TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    // Inserts a word into the trie.
+    public void insert(String word) {
+        char[] cArr = word.toCharArray();
+        TrieNode curr = root;
+        curr.words.add(word);
+        int i = 0;
+
+        while (i < cArr.length && curr.adjMap.containsKey(cArr[i])) {
+            curr = curr.adjMap.get(cArr[i++]);
+            curr.words.add(word);
+        }
+
+        int j;
+        for (j = i; j < cArr.length; j++) {
+            TrieNode temp = new TrieNode(cArr[j]);
+            curr.adjMap.put(cArr[j], temp);
+            curr = temp;
+            curr.words.add(word);
+        }
+
+        if (j == cArr.length) {
+            curr.word = word;
+            return;
+        }
+
+    }
+
+    // Returns if the word is in the trie.
+    public boolean search(String word) {
+        TrieNode curr = root;
+        int i = 0;
+
+        while (i < word.length() && curr.adjMap.containsKey(word.charAt(i))) {
+            curr = curr.adjMap.get(word.charAt(i++));
+        }
+
+        if (i == word.length() && curr.word != null && curr.word.equals(word)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Returns if there is any word in the trie
+    // that starts with the given prefix.
+    public boolean startsWith(String prefix) {
+        TrieNode curr = root;
+        int i = 0;
+
+        while (i < prefix.length() && curr.adjMap.containsKey(prefix.charAt(i))) {
+            curr = curr.adjMap.get(prefix.charAt(i++));
+        }
+
+        if (i == prefix.length()) {
+            for (TrieNode x : curr.adjMap.values()) {
+                if (x.words.size() > 0) {
+                    return true;
+                }
+            }
+        }
+
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        trie.insert("ab");
+
+        System.out.println(trie.search("a"));
+        System.out.println(trie.startsWith("a"));
+    }
+}
+
+// Your Trie object will be instantiated and called as such:
+// Trie trie = new Trie();
+// trie.insert("somestring");
+// trie.search("key");
+
+----------------------------------------------------------------
